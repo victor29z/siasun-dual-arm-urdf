@@ -45,7 +45,7 @@
     </collision>
   </link>
   <link
-    name="link-l1">
+    name="link-r1">
     <inertial>
       <origin
         xyz="-0.00534973802702698 4.87983111041035E-05 0.00237312099077956"
@@ -85,7 +85,7 @@
     </collision>
   </link>
   <joint
-    name="joint-l1"
+    name="joint-r1"
     type="revolute">
     <origin
       xyz="-0.3325 0 0.53254"
@@ -93,7 +93,7 @@
     <parent
       link="base_link" />
     <child
-      link="link-l1" />
+      link="link-r1" />
     <axis
       xyz="-1 0 0" />
     <limit
@@ -105,7 +105,7 @@
       k_velocity="0" />
   </joint>
   <link
-    name="link-l2">
+    name="link-r2">
     <inertial>
       <origin
         xyz="-0.0180744791124767 6.76109620012522E-07 0.150905771502013"
@@ -145,15 +145,15 @@
     </collision>
   </link>
   <joint
-    name="joint-l2"
+    name="joint-r2"
     type="revolute">
     <origin
       xyz="0 0 0"
       rpy="-1.5708 -1.5708 0" />
     <parent
-      link="link-l1" />
+      link="link-r1" />
     <child
-      link="link-l2" />
+      link="link-r2" />
     <axis
       xyz="1 0 0" />
     <limit
@@ -165,7 +165,7 @@
       k_velocity="0" />
   </joint>
   <link
-    name="link-l3">
+    name="link-r3">
     <inertial>
       <origin
         xyz="0.259675633888232 -0.000106676988941984 0.00217885119538147"
@@ -205,15 +205,15 @@
     </collision>
   </link>
   <joint
-    name="joint-l3"
+    name="joint-r3"
     type="revolute">
     <origin
       xyz="0 0 0"
       rpy="-1.5708 -1.5708 0" />
     <parent
-      link="link-l2" />
+      link="link-r2" />
     <child
-      link="link-l3" />
+      link="link-r3" />
     <axis
       xyz="1 0 0" />
     <limit
@@ -225,7 +225,7 @@
       k_velocity="0" />
   </joint>
   <link
-    name="link-l4">
+    name="link-r4">
     <inertial>
       <origin
         xyz="8.95972747452234E-05 0.154540593767959 0.0186572319008282"
@@ -265,15 +265,15 @@
     </collision>
   </link>
   <joint
-    name="joint-l4"
+    name="joint-r4"
     type="revolute">
     <origin
-      xyz="0.2651 -4E-05 0"
+      xyz="0.2651 0 0"
       rpy="0 0 0" />
     <parent
-      link="link-l3" />
+      link="link-r3" />
     <child
-      link="link-l4" />
+      link="link-r4" />
     <axis
       xyz="0 0 1" />
     <limit
@@ -285,7 +285,7 @@
       k_velocity="0" />
   </joint>
   <link
-    name="link-l5">
+    name="link-r5">
     <inertial>
       <origin
         xyz="6.66769830667824E-05 -0.00217885119119121 -0.00542436610779912"
@@ -325,15 +325,15 @@
     </collision>
   </link>
   <joint
-    name="joint-l5"
+    name="joint-r5"
     type="revolute">
     <origin
-      xyz="0 0.2653 0.00015"
+      xyz="0 0.2653 0"
       rpy="-1.5708 0 0" />
     <parent
-      link="link-l4" />
+      link="link-r4" />
     <child
-      link="link-l5" />
+      link="link-r5" />
     <axis
       xyz="0 0 1" />
     <limit
@@ -345,7 +345,7 @@
       k_velocity="0" />
   </joint>
   <link
-    name="link-l6">
+    name="link-r6">
     <inertial>
       <origin
         xyz="-7.6501517041444E-05 0.102022290812947 0.0130540857764574"
@@ -385,15 +385,15 @@
     </collision>
   </link>
   <joint
-    name="joint-l6"
+    name="joint-r6"
     type="revolute">
     <origin
       xyz="0 0 0"
       rpy="1.5708 -1.5708 0" />
     <parent
-      link="link-l5" />
+      link="link-r5" />
     <child
-      link="link-l6" />
+      link="link-r6" />
     <axis
       xyz="0 0 1" />
     <limit
@@ -405,7 +405,7 @@
       k_velocity="0" />
   </joint>
   <link
-    name="link-l7">
+    name="link-r7">
     <inertial>
       <origin
         xyz="0.0853754957393848 -0.000179584046905934 -0.0214932787894448"
@@ -445,15 +445,15 @@
     </collision>
   </link>
   <joint
-    name="joint-l7"
+    name="joint-r7"
     type="revolute">
     <origin
       xyz="0 0 0"
       rpy="1.5708 0 0" />
     <parent
-      link="link-l6" />
+      link="link-r6" />
     <child
-      link="link-l7" />
+      link="link-r7" />
     <axis
       xyz="0 0 1" />
     <limit
@@ -464,8 +464,24 @@
     <safety_controller
       k_velocity="0" />
   </joint>
+
+<link name="right_tcp"/>
+ <joint
+    name="fix_tcp_r"
+    type="fixed">
+    <origin
+      xyz="0.2 0 0"
+      rpy="0 3.14 -1.5708" />
+    <parent
+      link="link-r7" />
+    <child
+      link="right_tcp" />
+  </joint>
+
+
+
   <link
-    name="link-r1">
+    name="link-l1">
     <inertial>
       <origin
         xyz="-4.7875E-05 0.0023733 -0.0053507"
@@ -505,7 +521,7 @@
     </collision>
   </link>
   <joint
-    name="joint-r1"
+    name="joint-l1"
     type="revolute">
     <origin
       xyz="0.3325 0 0.53254"
@@ -513,7 +529,7 @@
     <parent
       link="base_link" />
     <child
-      link="link-r1" />
+      link="link-l1" />
     <axis
       xyz="0 0 -1" />
     <limit
@@ -525,7 +541,7 @@
       k_velocity="0" />
   </joint>
   <link
-    name="link-r2">
+    name="link-l2">
     <inertial>
       <origin
         xyz="7.4857E-07 -0.15091 -0.018075"
@@ -565,15 +581,15 @@
     </collision>
   </link>
   <joint
-    name="joint-r2"
+    name="joint-l2"
     type="revolute">
     <origin
       xyz="0 0 0"
       rpy="-1.5708 -1.5708 0" />
     <parent
-      link="link-r1" />
+      link="link-l1" />
     <child
-      link="link-r2" />
+      link="link-l2" />
     <axis
       xyz="0 0 1" />
     <limit
@@ -585,7 +601,7 @@
       k_velocity="0" />
   </joint>
   <link
-    name="link-r3">
+    name="link-l3">
     <inertial>
       <origin
         xyz="0.000108887236810712 0.00217841355489418 0.259675970068715"
@@ -625,15 +641,15 @@
     </collision>
   </link>
   <joint
-    name="joint-r3"
+    name="joint-l3"
     type="revolute">
     <origin
       xyz="0 0 0"
       rpy="1.5708 1.5708 0" />
     <parent
-      link="link-r2" />
+      link="link-l2" />
     <child
-      link="link-r3" />
+      link="link-l3" />
     <axis
       xyz="0 0 1" />
     <limit
@@ -645,7 +661,7 @@
       k_velocity="0" />
   </joint>
   <link
-    name="link-r4">
+    name="link-l4">
     <inertial>
       <origin
         xyz="-1.0925E-05 -0.15454 -0.018657"
@@ -685,15 +701,15 @@
     </collision>
   </link>
   <joint
-    name="joint-r4"
+    name="joint-l4"
     type="revolute">
     <origin
       xyz="4E-05 0 0.2651"
       rpy="1.5708 1.5708 0" />
     <parent
-      link="link-r3" />
+      link="link-l3" />
     <child
-      link="link-r4" />
+      link="link-l4" />
     <axis
       xyz="0 0 -1" />
     <limit
@@ -705,7 +721,7 @@
       k_velocity="0" />
   </joint>
   <link
-    name="link-r5">
+    name="link-l5">
     <inertial>
       <origin
         xyz="-6.8887E-05 -0.0021784 -0.005424"
@@ -745,15 +761,15 @@
     </collision>
   </link>
   <joint
-    name="joint-r5"
+    name="joint-l5"
     type="revolute">
     <origin
-      xyz="0 -0.2653 -0.00015"
+      xyz="0 -0.2653 0"
       rpy="1.5708 0 0" />
     <parent
-      link="link-r4" />
+      link="link-l4" />
     <child
-      link="link-r5" />
+      link="link-l5" />
     <axis
       xyz="0 0 1" />
     <limit
@@ -765,7 +781,7 @@
       k_velocity="0" />
   </joint>
   <link
-    name="link-r6">
+    name="link-l6">
     <inertial>
       <origin
         xyz="3.8669E-05 0.10202 0.013054"
@@ -805,15 +821,15 @@
     </collision>
   </link>
   <joint
-    name="joint-r6"
+    name="joint-l6"
     type="revolute">
     <origin
       xyz="0 0 0"
       rpy="1.5708 1.5708 0" />
     <parent
-      link="link-r5" />
+      link="link-l5" />
     <child
-      link="link-r6" />
+      link="link-l6" />
     <axis
       xyz="0 0 1" />
     <limit
@@ -825,7 +841,7 @@
       k_velocity="0" />
   </joint>
   <link
-    name="link-r7">
+    name="link-l7">
     <inertial>
       <origin
         xyz="0.00012027 -0.085375 -0.021494"
@@ -865,15 +881,15 @@
     </collision>
   </link>
   <joint
-    name="joint-r7"
+    name="joint-l7"
     type="revolute">
     <origin
       xyz="0 0 0"
       rpy="1.5708 1.5708 0" />
     <parent
-      link="link-r6" />
+      link="link-l6" />
     <child
-      link="link-r7" />
+      link="link-l7" />
     <axis
       xyz="0 0 1" />
     <limit
@@ -883,5 +899,18 @@
       velocity="3.15" />
     <safety_controller
       k_velocity="0" />
+  </joint>
+
+<link name="left_tcp"/>
+ <joint
+    name="fix_tcp_l"
+    type="fixed">
+    <origin
+      xyz="0 -0.2 0"
+      rpy="3.14 0 0" />
+    <parent
+      link="link-l7" />
+    <child
+      link="left_tcp" />
   </joint>
 </robot>

@@ -3,17 +3,24 @@
     name="model" />
   <arg
     name="gui"
-    default="True" />
+    default="False" />
   <param
     name="robot_description"
     textfile="$(find srs-77dof)/urdf/srs-77dof.urdf" />
+
   <param
     name="use_gui"
     value="$(arg gui)" />
-  <node
+  <!--node
     name="joint_state_publisher"
     pkg="joint_state_publisher"
-    type="joint_state_publisher" />
+    type="joint_state_publisher" /-->
+  <node
+    name="j_state_pub"
+    pkg="j_state_pub"
+    type="j_state_pub_node" 
+    args="192.168.0.201 17362" 
+    output="screen" />
   <node
     name="robot_state_publisher"
     pkg="robot_state_publisher"

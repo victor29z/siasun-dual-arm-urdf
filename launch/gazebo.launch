@@ -6,15 +6,33 @@
     pkg="tf"
     type="static_transform_publisher"
     args="0 0 0 0 0 0 base_link base_footprint 40" />
+  
+  <param name="robot_description" command="cat '$(find srs-77dof)/urdf/srs-77dof.urdf'" />
+
   <node
     name="spawn_model"
     pkg="gazebo_ros"
     type="spawn_model"
     args="-file $(find srs-77dof)/urdf/srs-77dof.urdf -urdf -model srs-77dof"
     output="screen" />
-  <node
+  <!--node
     name="fake_joint_calibration"
     pkg="rostopic"
     type="rostopic"
-    args="pub /calibrated std_msgs/Bool true" />
+    args="pub /calibrated std_msgs/Bool true" /-->
+
+  <include file="$(find srs-77dof)/launch/controller_utils.launch"/>
+
+  <rosparam file="$(find srs-77dof)/controller/jp_controller.yaml" command="load"/>
+  <node name="jp_controller_spawner" pkg="controller_manager" type="spawner" args=" 
+	joint_state_controller	
+	joint1_position_controller
+	joint2_position_controller
+	joint3_position_controller
+	joint4_position_controller
+	joint5_position_controller
+	joint6_position_controller
+	joint7_position_controller
+" respawn="false" output="screen" />
+
 </launch>
